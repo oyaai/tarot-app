@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* แถม: เพิ่ม Font สวยๆ ให้ดูขลังขึ้น */
+body {
+  margin: 0;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
