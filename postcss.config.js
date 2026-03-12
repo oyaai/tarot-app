@@ -1,6 +1,8 @@
+// postcss.config.js
 export default {
   plugins: {
-    "@tailwindcss/postcss": {},
+    // ใช้ชื่อ 'tailwindcss' ตรงๆ ไม่ต้องระบุ path ไปยัง node_modules
+    tailwindcss: {},
     autoprefixer: {},
   },
 };
