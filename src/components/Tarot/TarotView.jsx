@@ -73,7 +73,7 @@ const TarotView = ({ tarotHook }) => {
             onClick={handleOpenPayment} // 👈 เปลี่ยนมาเรียกเปิด Modal
             className="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-4 rounded-xl transition-all shadow-lg"
           >
-            ค่าคำทำนาย (99.-)
+            ขอคำทำนายแบบละเอียด (99.-)
           </button>
         </motion.div>
       )}

@@ -12,13 +12,21 @@ const MODELS = [
   "gemini-2.5-flash",
 ];
 
-export const predict = async (prompt, systemInstruction) => {
+export const predict = async (prompt, systemInstruction, images = []) => {
   const apiKey = import.meta.env.VITE_GEMINI_KEY;
 
+  // images: [{ mimeType: "image/jpeg", data: "<base64 no prefix>" }]
+  const parts = [{ text: `${systemInstruction}\n\n โจทย์: ${prompt}` }];
+  images.forEach((img) => {
+    if (img?.data) {
+      parts.push({
+        inlineData: { mimeType: img.mimeType || "image/jpeg", data: img.data },
+      });
+    }
+  });
+
   const payload = {
-    contents: [
-      { parts: [{ text: `${systemInstruction}\n\n โจทย์: ${prompt}` }] },
-    ],
+    contents: [{ parts }],
     generationConfig: {
       temperature: 0.8,
       maxOutputTokens: 2048,
