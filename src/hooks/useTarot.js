@@ -23,8 +23,8 @@ export const useTarot = () => {
   const getPrediction = async (question) => {
     setIsGeneratingAI(true);
     try {
-      const system = `คุณคือ "ปรมาจารย์โหราศาสตร์พยากรณ์" วิเคราะห์ไพ่ด้วยภาษาไทยสละสลวย 6-8 ประโยค`;
-      const prompt = `ไพ่: ${selectedCard.name}, คำถาม: ${question || "ดวงทั่วไป"}`;
+      const system = `คุณคือ "ปรมาจารย์โหราศาสตร์พยากรณ์" วิเคราะห์ไพ่ด้วยภาษาไทยสละสลวย 6-8 ประโยค  อ้างอิงตามตำราไพ่ทาโรต์ของ Rider-Waite และพูดความจริงตามหน้าไพ่`;
+      const prompt = `ไพ่ที่สุ่มได้คือ: ${selectedCard.name}, คำถามจากลูกดวงคือ: ${question || "ช่วยสรุปดวงชะตาภาพรวมในอนาคตอันใกล้"}`;
       const res = await predict(prompt, system);
       setPrediction(res.text);
       setActiveModel(res.modelUsed);

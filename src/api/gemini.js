@@ -17,11 +17,11 @@ export const predict = async (prompt, systemInstruction) => {
 
   const payload = {
     contents: [
-      { parts: [{ text: `${systemInstruction}\n\nโจทย์: ${prompt}` }] },
+      { parts: [{ text: `${systemInstruction}\n\n โจทย์: ${prompt}` }] },
     ],
     generationConfig: {
       temperature: 0.8,
-      maxOutputTokens: 2048, // ขยายเพื่อภาษาไทยที่ไม่ขาดตอน
+      maxOutputTokens: 2048,
     },
   };
 

@@ -20,7 +20,7 @@ const AstrologyView = () => {
       className="w-full max-w-md bg-white/5 p-8 rounded-[2rem] border border-indigo-500/20 backdrop-blur-md"
     >
       <h2 className="text-2xl font-bold text-indigo-300 mb-6 text-center italic">
-        ผูกดวงชะตาสากล
+        ผูกดวงชะตาสากล และเวชอินเดีย
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
@@ -46,6 +46,19 @@ const AstrologyView = () => {
             value={formData.time}
             onChange={(e) => setFormData({ ...formData, time: e.target.value })}
           />
+        </div>
+        <div>
+          <label className="block text-[10px] text-indigo-200/50 uppercase tracking-widest mb-2">
+            เพศ
+          </label>
+          <select
+            required
+            className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white"
+          >
+            <option value="ไม่ระบุ">ไม่ระบุ</option>
+            <option value="ชาย">ชาย</option>
+            <option value="หญิง">หญิง</option>
+          </select>
         </div>
         <button
           type="submit"

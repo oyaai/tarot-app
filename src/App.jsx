@@ -9,20 +9,30 @@ const App = () => {
   const [currentView, setCurrentView] = useState("home");
   const tarotHook = useTarot(); // [Controller] สำหรับหน้า Tarot
 
+  // --- 🛡️ ฟังก์ชันสำหรับกลับหน้าหลักและล้างค่า State ---
+  const handleBackToHome = () => {
+    setCurrentView("home"); // 1. เปลี่ยนหน้ากลับไปที่เมนูหลัก
+
+    // 2. สั่ง Reset ข้อมูลใน Hook ของไพ่ยิปซีทันที
+    if (tarotHook && typeof tarotHook.reset === "function") {
+      tarotHook.reset();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#050510] text-white flex flex-col items-center p-6 relative overflow-hidden font-serif">
       {/* Background Glow */}
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent pointer-events-none" />
 
-      {/* Header */}
+      {/* Header - คลิกที่หัวข้อก็ให้กลับหน้าหลักและ Reset ด้วย */}
       <header
-        className="text-center mb-12 z-10 cursor-pointer"
-        onClick={() => setCurrentView("home")}
+        className="text-center mb-12 z-10 cursor-pointer group"
+        onClick={handleBackToHome}
       >
-        <h1 className="text-5xl font-bold bg-gradient-to-b from-amber-200 to-amber-600 bg-clip-text text-transparent mb-2">
+        <h1 className="text-5xl font-bold bg-gradient-to-b from-amber-200 to-amber-600 bg-clip-text text-transparent mb-2 group-hover:scale-105 transition-transform">
           🔮 The Oracle Portal
         </h1>
-        <p className="text-slate-500 text-xs uppercase tracking-[0.5em]">
+        <p className="text-slate-500 text-xs uppercase tracking-[0.5em] opacity-70">
           Digital Wisdom & Divination
         </p>
       </header>
@@ -70,11 +80,11 @@ const App = () => {
         </AnimatePresence>
       </main>
 
-      {/* Back Button */}
+      {/* Back Button - เปลี่ยนมาใช้ฟังก์ชัน handleBackToHome */}
       {currentView !== "home" && (
         <button
-          onClick={() => setCurrentView("home")}
-          className="mt-12 text-slate-500 hover:text-amber-500 transition-colors text-sm uppercase tracking-widest"
+          onClick={handleBackToHome}
+          className="mt-12 text-slate-500 hover:text-amber-500 transition-colors text-sm uppercase tracking-widest z-20"
         >
           ← Back to Main Menu
         </button>
